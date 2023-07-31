@@ -15,11 +15,11 @@ export const getStaticPaths = async () => {
 
   return strapiData.data.map((page) => ({
     params: {
-      page: page.attributes.Title.toLowerCase(),
+      page: page.attributes.title.toLowerCase(),
     },
     props: {
-      title: page.attributes.Title,
-      body: page.attributes.Body,
+      title: page.attributes.title,
+      body: page.attributes.body,
     },
   }));
 };
