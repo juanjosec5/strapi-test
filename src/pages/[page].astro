@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/base.astro";
+
+export const getStaticPaths = async () => {
+  const baseStrapiUrl = "http://127.0.0.1:1337/api";
+  const token =
+    "3d755d55192b862a4210bc6f9b6c7d63f8c11a9438345345a621b1d9fb9e7cbf921db6043460bc38d385ba073db554bce7af8b7805ba12ec1979ecd0518ed04b9bf564b2fcda18732a5cddf306bd42c881d15b876dca39a9bde31192f0a6d6c0d26269a1de6f3f1892d36c3af8ca6397612b5443c0ed27282aafaf859d9ab0c9";
+  const strapiData = await fetch(`${baseStrapiUrl}/pages`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((body) => body.json());
+
+  return strapiData.data.map((page) => ({
+    params: {
+      page: page.attributes.Title.toLowerCase(),
+    },
+    props: {
+      title: page.attributes.Title,
+      body: page.attributes.Body,
+    },
+  }));
+};
+
+const { title, body } = Astro.props;
+console.log(Astro.props);
+---
+
+<Layout>
+  <h1>{title}</h1>
+  <p>{body}</p>
+</Layout>
