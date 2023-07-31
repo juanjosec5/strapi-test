@@ -2,9 +2,9 @@
 import Layout from "../layouts/base.astro";
 
 export const getStaticPaths = async () => {
-  const baseStrapiUrl = "http://127.0.0.1:1337/api";
+  const baseStrapiUrl = "http://cedsharp.ca:1337/api";
   const token =
-    "3d755d55192b862a4210bc6f9b6c7d63f8c11a9438345345a621b1d9fb9e7cbf921db6043460bc38d385ba073db554bce7af8b7805ba12ec1979ecd0518ed04b9bf564b2fcda18732a5cddf306bd42c881d15b876dca39a9bde31192f0a6d6c0d26269a1de6f3f1892d36c3af8ca6397612b5443c0ed27282aafaf859d9ab0c9";
+    "14a94bcbfca282303a94ef010e5f0eff4f29132280bb2c8e701df4f1378b4d1fda9393e80d76a753164e9e529b4c53e1e5c49eb5e2384107323c7ee08af1c9e1e5bc816a7e3afa6a06b582a1d2eba5897c1c82812e8abaef501b37a8142e3dc6fce50c6e346aaf345f6ab8c8f930ede0eddc64b908dfcdf96b5f7e4f28256ecc";
   const strapiData = await fetch(`${baseStrapiUrl}/pages`, {
     method: "GET",
     headers: {
